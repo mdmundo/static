@@ -1,7 +1,5 @@
 ### Container with Podman
 
-- `podman build -t static-image .`
+- `podman run --entrypoint '["npm", "i"]' -v ./public:/usr/src/app/public:z -i --rm node`
 
-- `podman run -p 3000:3000 --privileged=true -v <host-dir>:/usr/src/app/public --name static-server -d static-image`
-
-- `podman exec -it static-server sh`
+- `podman run -p 3000:3000 --entrypoint '["npm", "start"]' -v ./public:/usr/src/app/public:z -ti --rm node`
